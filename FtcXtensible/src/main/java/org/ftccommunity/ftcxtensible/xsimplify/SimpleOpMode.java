@@ -86,5 +86,7 @@ public abstract class SimpleOpMode extends StandardOpMode {
 
     public abstract void init(RobotContext ctx) throws Exception;
 
+    //public abstract void SimpleOpMode(RobotContext ctx) throws Exception;
+
     public abstract void loop(RobotContext ctx) throws Exception;
 }

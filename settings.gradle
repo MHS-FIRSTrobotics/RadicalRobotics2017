@@ -1,7 +1,9 @@
 include ':FtcRobotController',
         ':FtcXtensible',
         ':FtcSdk',
-        ':TeamCode'
+        ':TeamCode',
+        ':ftc-visionlib',
+        ':opencv-java'
 /*
  * Copyright © 2016 David Sargent
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
