@@ -107,7 +107,6 @@ public class SensorAdafruitIMU extends LinearOpMode
         // Loop and update the dashboard
         while (opModeIsActive()) {
             telemetry.update();
-            idle();
         }
     }
 

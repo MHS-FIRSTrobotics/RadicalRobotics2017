@@ -20,13 +20,13 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '24.0.1'
+    buildToolsVersion '24.0.3'
     defaultConfig {
         minSdkVersion 19
         //noinspection OldTargetApi
         targetSdkVersion 24
         versionCode 1
-        versionName '0.60'
+        versionName '0.7.0'
     }
     lintOptions {
         abortOnError false
@@ -56,17 +56,21 @@ android {
 
 repositories {
     flatDir {
-        //dirs '../FtcRobotController/libs'
         dirs '../libs'
     }
+    jcenter()
 }
 
 dependencies {
     compile project(':FtcSdk')
-    compile files('libs/netty-all-4.0.40.Final.jar')
+
     compile 'com.google.guava:guava:19.0'
-    //compile 'com.google.code.gson:gson:2.4'
     testCompile 'junit:junit:4.12'
     compile 'org.jetbrains:annotations:13.0'
-    //compile 'com.android.support:support-annotations:24.2.0'
+
+    // Uncomment to enable OpenCV
+    // compile name: 'OpenCV-standard-debug', ext: 'aar'
+
+    // Deprecated dependencies for dependencies that need to be rewritten
+    // compile files('libs/netty-all-4.0.40.Final.jar')
 }

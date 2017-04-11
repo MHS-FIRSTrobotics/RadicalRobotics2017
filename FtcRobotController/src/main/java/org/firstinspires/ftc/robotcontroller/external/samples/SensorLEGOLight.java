@@ -31,23 +31,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.firstinspires.ftc.robotcontroller.external.samples;
 
-import android.app.Activity;
-import android.graphics.Color;
-import android.view.View;
-
-import com.qualcomm.ftcrobotcontroller.R;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.LightSensor;
 
 /*
  *
  * This is an example LinearOpMode that shows how to use
  * a legacy (NXT-compatible) Light Sensor.
- * It assumes that the light sensor is configured with a name of "light sensor".
+ * It assumes that the light sensor is configured with a name of "sensor_light".
  *
  * You can use the X button on gamepad1 to turn Toggle the LED on and off.
  *
@@ -71,7 +64,7 @@ public class SensorLEGOLight extends LinearOpMode {
     boolean bLedOn = true;
 
     // get a reference to our Light Sensor object.
-    lightSensor = hardwareMap.lightSensor.get("light sensor");
+    lightSensor = hardwareMap.lightSensor.get("sensor_light");
 
     // Set the LED state in the beginning.
     lightSensor.enableLed(bLedOn);
@@ -103,7 +96,6 @@ public class SensorLEGOLight extends LinearOpMode {
       telemetry.addData("Normal", lightSensor.getLightDetected());
 
       telemetry.update();
-      idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
     }
   }
 }

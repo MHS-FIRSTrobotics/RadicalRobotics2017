@@ -35,7 +35,6 @@ package org.firstinspires.ftc.robotcontroller.external.samples;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.LightSensor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 /**
@@ -63,13 +62,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 @Disabled
 public class PushbotAutoDriveByTime_Linear extends LinearOpMode {
 
+    static final double FORWARD_SPEED = 0.6;
+    static final double TURN_SPEED = 0.5;
     /* Declare OpMode members. */
     HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
     private ElapsedTime     runtime = new ElapsedTime();
-
-
-    static final double     FORWARD_SPEED = 0.6;
-    static final double     TURN_SPEED    = 0.5;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -96,7 +93,6 @@ public class PushbotAutoDriveByTime_Linear extends LinearOpMode {
         while (opModeIsActive() && (runtime.seconds() < 3.0)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
-            idle();
         }
 
         // Step 2:  Spin right for 1.3 seconds
@@ -106,7 +102,6 @@ public class PushbotAutoDriveByTime_Linear extends LinearOpMode {
         while (opModeIsActive() && (runtime.seconds() < 1.3)) {
             telemetry.addData("Path", "Leg 2: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
-            idle();
         }
 
         // Step 3:  Drive Backwards for 1 Second
@@ -116,7 +111,6 @@ public class PushbotAutoDriveByTime_Linear extends LinearOpMode {
         while (opModeIsActive() && (runtime.seconds() < 1.0)) {
             telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());
             telemetry.update();
-            idle();
         }
 
         // Step 4:  Stop and close the claw.
@@ -128,6 +122,5 @@ public class PushbotAutoDriveByTime_Linear extends LinearOpMode {
         telemetry.addData("Path", "Complete");
         telemetry.update();
         sleep(1000);
-        idle();
     }
 }

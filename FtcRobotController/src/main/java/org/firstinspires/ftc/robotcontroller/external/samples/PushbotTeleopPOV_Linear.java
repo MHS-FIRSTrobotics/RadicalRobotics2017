@@ -35,11 +35,7 @@ package org.firstinspires.ftc.robotcontroller.external.samples;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
-import com.qualcomm.robotcore.util.RobotLog;
 
 /**
  * This OpMode uses the common Pushbot hardware class to define the devices on the robot.
@@ -59,11 +55,11 @@ import com.qualcomm.robotcore.util.RobotLog;
 @Disabled
 public class PushbotTeleopPOV_Linear extends LinearOpMode {
 
+    final double CLAW_SPEED = 0.02;                   // sets rate to move servo
     /* Declare OpMode members. */
     HardwarePushbot robot           = new HardwarePushbot();   // Use a Pushbot's hardware
                                                                // could also use HardwarePushbotMatrix class.
     double          clawOffset      = 0;                       // Servo mid position
-    final double    CLAW_SPEED      = 0.02 ;                   // sets rate to move servo
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -110,14 +106,14 @@ public class PushbotTeleopPOV_Linear extends LinearOpMode {
 
             // Move both servos to new position.  Assume servos are mirror image of each other.
             clawOffset = Range.clip(clawOffset, -0.5, 0.5);
-            robot.leftClaw.setPosition(robot.MID_SERVO + clawOffset);
-            robot.rightClaw.setPosition(robot.MID_SERVO - clawOffset);
+            robot.leftClaw.setPosition(HardwarePushbot.MID_SERVO + clawOffset);
+            robot.rightClaw.setPosition(HardwarePushbot.MID_SERVO - clawOffset);
 
             // Use gamepad buttons to move arm up (Y) and down (A)
             if (gamepad1.y)
-                robot.armMotor.setPower(robot.ARM_UP_POWER);
+                robot.armMotor.setPower(HardwarePushbot.ARM_UP_POWER);
             else if (gamepad1.a)
-                robot.armMotor.setPower(robot.ARM_DOWN_POWER);
+                robot.armMotor.setPower(HardwarePushbot.ARM_DOWN_POWER);
             else
                 robot.armMotor.setPower(0.0);
 

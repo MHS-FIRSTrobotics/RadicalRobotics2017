@@ -306,12 +306,16 @@ implements <a href="../../../../../com/qualcomm/robotcore/eventloop/opmode/OpMod
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><strong><a href="../../../../../com/qualcomm/robotcore/eventloop/opmode/OpModeManagerImpl.html#detectStuck(java.lang.String,%20java.lang.Runnable)">detectStuck</a></strong>(java.lang.String&nbsp;method,
+    <td class="colLast"><code><strong><a
+            href="../../../../../com/qualcomm/robotcore/eventloop/opmode/OpModeManagerImpl.html#detectStuck(int,%20java.lang.String,%20java.lang.Runnable)">detectStuck</a></strong>(int&nbsp;msTimeout,
+        java.lang.String&nbsp;method,
            java.lang.Runnable&nbsp;runnable)</code>&nbsp;</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><strong><a href="../../../../../com/qualcomm/robotcore/eventloop/opmode/OpModeManagerImpl.html#detectStuck(java.lang.String,%20java.lang.Runnable,%20boolean)">detectStuck</a></strong>(java.lang.String&nbsp;method,
+    <td class="colLast"><code><strong><a
+            href="../../../../../com/qualcomm/robotcore/eventloop/opmode/OpModeManagerImpl.html#detectStuck(int,%20java.lang.String,%20java.lang.Runnable,%20boolean)">detectStuck</a></strong>(int&nbsp;msTimeout,
+        java.lang.String&nbsp;method,
            java.lang.Runnable&nbsp;runnable,
            boolean&nbsp;resetDebuggerCheck)</code>&nbsp;</td>
 </tr>
@@ -943,23 +947,25 @@ implements <a href="../../../../../com/qualcomm/robotcore/eventloop/opmode/OpMod
 <pre>protected&nbsp;void&nbsp;callActiveOpModeStop()</pre>
 </li>
 </ul>
-<a name="detectStuck(java.lang.String, java.lang.Runnable)">
+    <a name="detectStuck(int, java.lang.String, java.lang.Runnable)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>detectStuck</h4>
-<pre>protected&nbsp;void&nbsp;detectStuck(java.lang.String&nbsp;method,
+<pre>protected&nbsp;void&nbsp;detectStuck(int&nbsp;msTimeout,
+               java.lang.String&nbsp;method,
                java.lang.Runnable&nbsp;runnable)</pre>
 </li>
 </ul>
-<a name="detectStuck(java.lang.String, java.lang.Runnable, boolean)">
+    <a name="detectStuck(int, java.lang.String, java.lang.Runnable, boolean)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>detectStuck</h4>
-<pre>protected&nbsp;void&nbsp;detectStuck(java.lang.String&nbsp;method,
+<pre>protected&nbsp;void&nbsp;detectStuck(int&nbsp;msTimeout,
+               java.lang.String&nbsp;method,
                java.lang.Runnable&nbsp;runnable,
                boolean&nbsp;resetDebuggerCheck)</pre>
 </li>
@@ -1022,7 +1028,7 @@ implements <a href="../../../../../com/qualcomm/robotcore/eventloop/opmode/OpMod
 <div class="block">Update's the user portion of the driver station screen with the contents of the telemetry object
  here provided if a sufficiently long duration has passed since the last update.</div>
 <dl><dt><span class="strong">Parameters:</span></dt><dd><code>telemetry</code> - the telemetry object to send</dd><dd><code>sInterval</code> - the required minimum interval. NaN indicates that a system default interval should be used.
-                  A value of zero will cause immediate transmission.</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../com/qualcomm/robotcore/eventloop/EventLoop.html#TELEMETRY_DEFAULT_INTERVAL"><code>EventLoop.TELEMETRY_DEFAULT_INTERVAL</code></a></dd></dl>
+                  A val of zero will cause immediate transmission.</dd><dt><span class="strong">See Also:</span></dt><dd><a href="../../../../../com/qualcomm/robotcore/eventloop/EventLoop.html#TELEMETRY_DEFAULT_INTERVAL"><code>EventLoop.TELEMETRY_DEFAULT_INTERVAL</code></a></dd></dl>
 </li>
 </ul>
 <a name="requestOpModeStop(com.qualcomm.robotcore.eventloop.opmode.OpMode)">

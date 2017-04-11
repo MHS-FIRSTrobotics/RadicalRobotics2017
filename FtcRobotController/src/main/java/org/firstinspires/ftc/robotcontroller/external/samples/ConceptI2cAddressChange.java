@@ -32,7 +32,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 package org.firstinspires.ftc.robotcontroller.external.samples;
 
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsUsbDeviceInterfaceModule;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -148,7 +147,7 @@ public class ConceptI2cAddressChange extends LinearOpMode {
     // Enable writes to the correct segment of the memory map.
     performAction("write", port, currentAddress, ADDRESS_SET_NEW_I2C_ADDRESS, BUFFER_CHANGE_ADDRESS_LENGTH);
 
-    // Write out the trigger bytes, and the new desired address.
+    // WRITE out the trigger bytes, and the new desired address.
     writeNewAddress();
     dim.setI2cPortActionFlag(port);
     dim.writeI2cCacheToController(port);

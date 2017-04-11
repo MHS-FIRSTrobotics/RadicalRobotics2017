@@ -7,10 +7,31 @@
 // the build definitions, you can place those customizations in this file, but
 // please think carefully as to whether such customizations are really necessary
 // before doing so.
+
+
 // Custom definitions may go here
+
 // Include common definitions from above.
 apply from: '../build.common.gradle'
 dependencies {
     compile project(':opencv-java')
     compile project(':ftc-visionlib')
+}
+android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        textReport true
+        // location to write the output; can be a file or 'stdout'
+        textOutput 'stdout'
+    }
+}
+
+
+
+dependencies {
+    compile project(path: ':FtcXtensible')
 }

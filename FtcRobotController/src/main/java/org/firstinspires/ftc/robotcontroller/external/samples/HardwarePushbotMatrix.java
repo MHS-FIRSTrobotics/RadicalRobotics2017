@@ -1,9 +1,7 @@
 package org.firstinspires.ftc.robotcontroller.external.samples;
 
 import com.qualcomm.hardware.matrix.MatrixDcMotorController;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoController;
 
 /**
@@ -20,11 +18,11 @@ import com.qualcomm.robotcore.hardware.ServoController;
  *
  * Matrix Controller has been assigned the name:  "matrix controller"
  *
- * Motor channel:  Left  drive motor:        "left motor"
- * Motor channel:  Right drive motor:        "right motor"
- * Motor channel:  Manipulator drive motor:  "arm motor"
- * Servo channel:  Servo to open left claw:  "left claw"
- * Servo channel:  Servo to open right claw: "right claw"
+ * Motor channel:  Left  drive motor:        "left_drive"
+ * Motor channel:  Right drive motor:        "right_drive"
+ * Motor channel:  Manipulator drive motor:  "left_arm"
+ * Servo channel:  Servo to open left claw:  "left_hand"
+ * Servo channel:  Servo to open right claw: "right_hand"
  *
  * In addition, the Matrix Controller has been assigned the name:  "matrix controller"
  */

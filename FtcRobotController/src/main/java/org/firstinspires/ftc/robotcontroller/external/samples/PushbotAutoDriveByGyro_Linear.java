@@ -75,25 +75,21 @@ import com.qualcomm.robotcore.util.Range;
 @Disabled
 public class PushbotAutoDriveByGyro_Linear extends LinearOpMode {
 
-    /* Declare OpMode members. */
-    HardwarePushbot         robot   = new HardwarePushbot();   // Use a Pushbot's hardware
-    ModernRoboticsI2cGyro   gyro    = null;                    // Additional Gyro device
-
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = 2.0 ;     // This is < 1.0 if geared UP
     static final double     WHEEL_DIAMETER_INCHES   = 4.0 ;     // For figuring circumference
     static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) /
                                                       (WHEEL_DIAMETER_INCHES * 3.1415);
-
     // These constants define the desired driving/control characteristics
     // The can/should be tweaked to suite the specific robot drive train.
     static final double     DRIVE_SPEED             = 0.7;     // Nominal speed for better accuracy.
     static final double     TURN_SPEED              = 0.5;     // Nominal half speed for better accuracy.
-
     static final double     HEADING_THRESHOLD       = 1 ;      // As tight as we can make it with an integer gyro
     static final double     P_TURN_COEFF            = 0.1;     // Larger is more responsive, but also less stable
     static final double     P_DRIVE_COEFF           = 0.15;     // Larger is more responsive, but also less stable
-
+    /* Declare OpMode members. */
+    HardwarePushbot robot = new HardwarePushbot();   // Use a Pushbot's hardware
+    ModernRoboticsI2cGyro gyro = null;                    // Additional Gyro device
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -116,8 +112,8 @@ public class PushbotAutoDriveByGyro_Linear extends LinearOpMode {
         gyro.calibrate();
 
         // make sure the gyro is calibrated before continuing
-        while (gyro.isCalibrating())  {
-            Thread.sleep(50);
+        while (!isStopRequested() && gyro.isCalibrating()) {
+            sleep(50);
             idle();
         }
 
@@ -165,9 +161,9 @@ public class PushbotAutoDriveByGyro_Linear extends LinearOpMode {
     *                   0 = fwd. +ve is CCW from fwd. -ve is CW from forward.
     *                   If a relative angle is required, add/subtract from current heading.
     */
-    public void gyroDrive ( double speed,
-                            double distance,
-                            double angle) throws InterruptedException {
+   public void gyroDrive(double speed,
+                         double distance,
+                         double angle) {
 
         int     newLeftTarget;
         int     newRightTarget;
@@ -231,9 +227,6 @@ public class PushbotAutoDriveByGyro_Linear extends LinearOpMode {
                                                              robot.rightMotor.getCurrentPosition());
                 telemetry.addData("Speed",   "%5.2f:%5.2f",  leftSpeed, rightSpeed);
                 telemetry.update();
-
-                // Allow time for other processes to run.
-                idle();
             }
 
             // Stop all motion;
@@ -256,16 +249,13 @@ public class PushbotAutoDriveByGyro_Linear extends LinearOpMode {
      * @param angle      Absolute Angle (in Degrees) relative to last gyro reset.
      *                   0 = fwd. +ve is CCW from fwd. -ve is CW from forward.
      *                   If a relative angle is required, add/subtract from current heading.
-     * @throws InterruptedException
      */
-    public void gyroTurn (  double speed, double angle)
-                              throws InterruptedException {
+    public void gyroTurn(double speed, double angle) {
 
         // keep looping while we are still active, and not on heading.
         while (opModeIsActive() && !onHeading(speed, angle, P_TURN_COEFF)) {
             // Update telemetry & Allow time for other processes to run.
             telemetry.update();
-            idle();
         }
     }
 
@@ -278,10 +268,8 @@ public class PushbotAutoDriveByGyro_Linear extends LinearOpMode {
      *                   0 = fwd. +ve is CCW from fwd. -ve is CW from forward.
      *                   If a relative angle is required, add/subtract from current heading.
      * @param holdTime   Length of time (in seconds) to hold the specified heading.
-     * @throws InterruptedException
      */
-    public void gyroHold( double speed, double angle, double holdTime)
-                            throws InterruptedException {
+    public void gyroHold(double speed, double angle, double holdTime) {
 
         ElapsedTime holdTimer = new ElapsedTime();
 
@@ -291,7 +279,6 @@ public class PushbotAutoDriveByGyro_Linear extends LinearOpMode {
             // Update telemetry & Allow time for other processes to run.
             onHeading(speed, angle, P_TURN_COEFF);
             telemetry.update();
-            idle();
         }
 
         // Stop all motion;

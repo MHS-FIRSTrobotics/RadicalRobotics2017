@@ -45,7 +45,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
  *
  * This is an example LinearOpMode that shows how to use
  * a legacy (NXT-compatible) Hitechnic Color Sensor v2.
- * It assumes that the color sensor is configured with a name of "color sensor".
+ * It assumes that the color sensor is configured with a name of "sensor_color".
  *
  * You can use the X button on gamepad1 to toggle the LED on and off.
  *
@@ -80,7 +80,7 @@ public class SensorHTColor extends LinearOpMode {
     boolean bLedOn = true;
 
     // get a reference to our ColorSensor object.
-    colorSensor = hardwareMap.colorSensor.get("color sensor");
+    colorSensor = hardwareMap.colorSensor.get("sensor_color");
 
     // turn the LED on in the beginning, just so user will know that the sensor is active.
     colorSensor.enableLed(bLedOn);
@@ -128,7 +128,6 @@ public class SensorHTColor extends LinearOpMode {
       });
 
       telemetry.update();
-      idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
     }
   }
 }

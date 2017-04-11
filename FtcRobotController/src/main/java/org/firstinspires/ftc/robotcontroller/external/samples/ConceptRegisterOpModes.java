@@ -31,14 +31,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.firstinspires.ftc.robotcontroller.external.samples;
 
-import android.hardware.Sensor;
-import android.util.Log;
-
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegistrar;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
-import org.firstinspires.ftc.robotcontroller.external.samples.*;
 
 /**
  * This class demonstrates how to manually register opmodes.
@@ -86,7 +80,10 @@ public class ConceptRegisterOpModes
     // manager.register("K9 Telop",               K9botTeleopTank_Linear.class);
 
     // Sensor Samples
+    // manager.register("AdaFruit IMU",           SensorAdafruitIMU.class);
+    // manager.register("AdaFruit IMU Cal",       SensorAdafruitIMUCalibration.class);
     // manager.register("AdaFruit Color",         SensorAdafruitRGB.class);
+    // manager.register("DIM DIO",                SensorDIO.class);
     // manager.register("HT Color",               SensorHTColor.class);
     // manager.register("LEGO Light",             SensorLEGOLight.class);
     // manager.register("LEGO Touch",             SensorLEGOTouch.class);

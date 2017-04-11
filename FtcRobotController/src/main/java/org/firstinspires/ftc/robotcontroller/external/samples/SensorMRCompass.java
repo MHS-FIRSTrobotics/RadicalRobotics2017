@@ -116,7 +116,6 @@ public class SensorMRCompass extends LinearOpMode {
             }
 
             doTelemetry();
-            idle(); // Always call idle() at the bottom of your while(opModeIsActive()) loop
         }
     }
 
